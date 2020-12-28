@@ -9,7 +9,6 @@ exports.resizeTourImages = (req, res, next) => {
   next();
 };
 exports.aliasTopFive = () => {};
-
 exports.createdByCurrentUser = () => {};
 
 exports.createTour = () => {};
