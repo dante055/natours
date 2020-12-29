@@ -108,14 +108,20 @@ const tourSchema = new mongoose.Schema(
     createdBy: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, 'A tour must have creator!'],
+      // required: [true, 'A tour must have creator!'],
       select: false,
     },
   },
   {
     collection: 'tours',
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
   }
 );
+
+tourSchema.virtual('durationWeeks').get(function () {
+  return this.duration / 7;
+});
 
 const Tour = mongoose.model('Tour', tourSchema);
 
